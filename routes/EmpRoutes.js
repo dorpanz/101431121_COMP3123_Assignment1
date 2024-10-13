@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
+
 router.post('/employees',[
     body('first_name').notEmpty().withMessage('First name is required'),
     body('last_name').notEmpty().withMessage('Last name is required'),
