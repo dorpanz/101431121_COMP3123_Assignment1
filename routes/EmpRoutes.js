@@ -67,6 +67,7 @@ router.get("/employees/:eid", async (req, res) =>{
         }
 });
 
+
 router.put("/employees/:eid", [ 
     body('salary').optional().isFloat({ min: 0 }).withMessage('Salary must be a non-negative number')],
     async (req, res) =>{
@@ -100,6 +101,7 @@ router.put("/employees/:eid", [
         res.status(500).send({ status: false, message: "Error updating employee", error: err.message});
     }
 });
+
 
 router.delete('/employees/:eid', async (req, res)=>{
     const eid = req.params.eid;

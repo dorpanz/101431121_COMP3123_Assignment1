@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require('express-validator');
 
+
 router.post("/signup",
     [ body('username').notEmpty().withMessage('Username is required'),
     body('email').notEmpty().withMessage('Email is required'),
