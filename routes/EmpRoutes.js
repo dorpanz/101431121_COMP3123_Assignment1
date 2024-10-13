@@ -14,7 +14,7 @@ router.post('/employees',[
     if (!errors.isEmpty()) {
         return res.status(400).json({ 
             status: false,
-            message: errors.array().map(err => err.msg).join(', ') // Combine error messages
+            message: errors.array().map(err => err.msg).join(', ') 
         });
     }
     const existingEmployee = await empModel.findOne({ email });
@@ -72,19 +72,14 @@ router.put("/employees/:eid", [
     async (req, res) =>{
     const eid = req.params.eid;
     const { first_name, last_name, email, department, date_of_joining, position, salary , updated_at} = req.body;
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ 
             status: false,
-            message: errors.array().map(err => err.msg).join(', ') // Combine error messages
+            message: errors.array().map(err => err.msg).join(', ') 
         });
     }
     const existingEmployee = await empModel.findOne({ email });
-    if (existingEmployee) {
-        return res.status(400).json({ 
-            status: false, 
-            message: "Email already exists" 
-        });
-    }
     try {
         const employee = await empModel.findByIdAndUpdate(eid, {
             first_name,

@@ -15,7 +15,7 @@ router.post("/signup",
     if (!errors.isEmpty()) {
         return res.status(400).json({ 
             status: false,
-            message: errors.array().map(err => err.msg).join(', ') // Combine error messages
+            message: errors.array().map(err => err.msg).join(', ') 
         });
     }
     const existingUser = await userModel.findOne({ 
@@ -51,7 +51,7 @@ router.post("/login",
     if (!errors.isEmpty()) {
         return res.status(400).json({ 
             status: false,
-            message: errors.array().map(err => err.msg).join(', ') // Combine error messages
+            message: errors.array().map(err => err.msg).join(', ') 
         });
     }
     if (!username && !email) {
